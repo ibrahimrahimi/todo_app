@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>To Do List App</title>
+
+   
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="{% static 'static/todo/css/signup.css' %}" rel="stylesheet">
+    <script src="{% static 'static/todo/js/jquery-1.11.2.js' %}"></script>
+    <script src="{% static 'static/todo/js/signUp.js' %}"></script>
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="{% url 'home' %}">Home</a></li>
+            <li role="presentation"><a href="{% url 'signup' %}">Sign In</a></li>
+            <li role="presentation" class="active"><a href="{% url 'signup' %}">Sign Up</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">To Do List App</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>To Do List App</h1>
+        <form class="form-signin" method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        <label for="inputName" class="sr-only">Name</label>
+        {{ form.user_name }}
+        <label for="inputEmail" class="sr-only">Email address</label>
+        {{ form.user_email }}
+        <label for="inputPassword" class="sr-only">Password</label>
+        {{form.user_password}}
+        <button id="btnSignUp" action = 'submit'class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+      </form>
+      </div>
+
+      
+
+      <footer class="footer">
+        <p>&copy; MicroTech </p>
+      </footer>
+
+    </div>
+  </body>
+</html>
+

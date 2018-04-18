@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>To Do List App</title>
+
+   
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+    {%block content%}
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>TASKS TO DO </h1>
+        <p class="lead"></p>
+        <p><a class="btn btn-lg btn-success" href="{% url 'add' %}" role="button">Add Task</a></p>
+      </div>
+
+      <div class="row marketing">
+
+        {% for t in tasks %}
+        <div class="col-lg-6">
+          <h4>{{ t.task_title }}</h4>
+          <p>{{ t.task_description }}</p>
+          <P>{{ t.due_date }}</P>
+          <p> Repeat type: {{ t.repeate_type_id.Repeate_type }}</p>
+          <input type="checkbox"> Complete: {{t.complete }}</input>
+        </div>
+        {% endfor %}
+      </div>
+
+      <footer class="footer">
+        <p>&copy; MicroTech </p>
+      </footer>
+
+    </div>
+    {% endblock %}
+  </body>
+</html>
+
